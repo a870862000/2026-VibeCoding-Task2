@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Wendy · Designer | 作品集網站</title>
+  <title>Wendy · Designer | Portfolio</title>
   <meta name="description" content="這是一個專注於前端開發與使用者體驗設計的個人品牌網站，展示我的專業背景、前端技能、專案作品集以及聯絡方式。">
   
   <style>
@@ -150,8 +150,50 @@
     .section-about {
       background-color: #0f172a;
     }
+    .about-content {
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+    }
     .about-text p {
       margin-bottom: 16px;
+      color: #cbd5e1;
+    }
+    .about-strengths {
+      margin: 24px 0;
+      padding-left: 20px;
+      color: #cbd5e1;
+    }
+    .about-strengths li {
+      margin-bottom: 12px;
+    }
+    .about-strengths strong {
+      color: #f8fafc;
+    }
+    .about-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      margin-top: 32px;
+    }
+    .btn-secondary {
+      display: inline-block;
+      background-color: transparent;
+      color: #0ea5e9;
+      padding: 12px 24px;
+      border-radius: 6px;
+      font-weight: bold;
+      border: 1px solid #0ea5e9;
+      transition: all 0.3s ease;
+    }
+    .btn-secondary:hover {
+      background-color: #0ea5e9;
+      color: #ffffff;
+    }
+    .about-image-wrapper {
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid #334155;
     }
     /* CSS:ABOUT-END */
 
@@ -159,11 +201,48 @@
     .section-skills {
       background-color: #1e293b;
     }
-    .skills-placeholder-box {
+    .skills-grid {
+      display: grid;
+      grid-template-columns: 1fr; /* 手機版預設一欄 */
+      gap: 24px;
+    }
+    .skill-category {
       background-color: #0f172a;
-      border: 1px dashed #475569;
+      border: 1px solid #334155;
+      border-radius: 12px;
       padding: 24px;
-      border-radius: 8px;
+      display: flex;
+      flex-direction: column;
+    }
+    .skill-category-title {
+      margin-top: 0;
+      margin-bottom: 20px;
+      color: #f8fafc;
+      font-size: 1.25rem;
+      border-bottom: 1px solid #334155;
+      padding-bottom: 12px;
+    }
+    .skill-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .skill-tag {
+      background-color: rgba(14, 165, 233, 0.1);
+      color: #7dd3fc;
+      padding: 8px 16px;
+      border-radius: 6px; 
+      font-size: 0.9rem;
+      font-weight: 500;
+      border: 1px solid rgba(14, 165, 233, 0.3);
+      transition: all 0.3s ease;
+      cursor: default;
+    }
+    .skill-tag:hover {
+      background-color: rgba(14, 165, 233, 0.2);
+      border-color: #38bdf8;
+      box-shadow: 0 0 10px rgba(56, 189, 248, 0.5);
+      color: #e0f2fe;
     }
     /* CSS:SKILLS-END */
 
@@ -172,33 +251,138 @@
       background-color: #0f172a;
     }
     .projects-grid {
-      display: flex;
-      flex-direction: column;
+      display: grid;
+      grid-template-columns: 1fr; /* 手機版預設一欄 */
       gap: 24px;
     }
     .project-card {
       background-color: #1e293b;
       border: 1px solid #334155;
-      border-radius: 8px;
-      padding: 24px;
+      border-radius: 12px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
     }
-    .project-card h3 {
+    .project-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
+      border-color: #38bdf8;
+    }
+    .project-image-wrapper {
+      width: 100%;
+      height: 220px;
+      overflow: hidden;
+    }
+    .project-image-wrapper img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+    .project-card:hover .project-image-wrapper img {
+      transform: scale(1.05);
+    }
+    .project-content {
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
+    .project-content h3 {
       margin-top: 0;
+      margin-bottom: 12px;
       color: #f8fafc;
+      font-size: 1.25rem;
+    }
+    .project-content p {
+      margin: 0;
+      color: #cbd5e1;
+      font-size: 0.95rem;
     }
     /* CSS:PROJECTS-END */
 
     /* CSS:CONTACT-START */
     .section-contact {
       background-color: #1e293b;
-      text-align: center;
     }
-    .contact-info {
-      margin-top: 32px;
+    .contact-subtitle {
+      text-align: center;
+      margin-bottom: 40px;
+      color: #cbd5e1;
+    }
+    .contact-layout {
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+    }
+    .contact-form-wrapper {
+      background-color: #0f172a;
+      padding: 32px;
+      border-radius: 12px;
+      border: 1px solid #334155;
+    }
+    .contact-form {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .form-label {
+      color: #e2e8f0;
+      font-size: 0.95rem;
+      font-weight: 500;
+    }
+    .form-control {
+      width: 100%;
+      padding: 12px;
+      border-radius: 6px;
+      border: 1px solid #334155;
+      background-color: #1e293b;
+      color: #f8fafc;
+      font-family: inherit;
+      font-size: 1rem;
+      transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    }
+    .form-control:focus {
+      outline: none;
+      border-color: #38bdf8;
+      box-shadow: 0 0 0 2px rgba(56, 189, 248, 0.2);
+    }
+    .form-submit {
+      border: none;
+      cursor: pointer;
+      font-size: 1rem;
+      margin-top: 8px;
+      width: 100%;
+    }
+    .contact-links-wrapper {
       display: flex;
       flex-direction: column;
       gap: 16px;
-      align-items: center;
+      padding: 32px;
+      background-color: #0f172a;
+      border-radius: 12px;
+      border: 1px solid #334155;
+    }
+    .contact-links-wrapper h3 {
+      margin: 0;
+      color: #f8fafc;
+      font-size: 1.25rem;
+    }
+    .contact-links {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      margin-top: 8px;
+    }
+    .contact-btn {
+      text-align: center;
+      width: 100%;
     }
     /* CSS:CONTACT-END */
 
@@ -214,16 +398,56 @@
       .hero-title {
         font-size: 3.5rem;
       }
-      .projects-grid {
+      .about-content {
         flex-direction: row;
+        align-items: center;
+        gap: 48px;
       }
-      .project-card {
+      .about-text {
         flex: 1;
       }
-      .contact-info {
+      .about-image-wrapper {
+        flex: 1;
+      }
+      .skills-grid {
+        grid-template-columns: repeat(2, 1fr); /* 平板版雙欄 */
+      }
+      .projects-grid {
+        grid-template-columns: repeat(2, 1fr); /* 平板版雙欄 */
+      }
+      /* Contact 區塊雙欄佈局 */
+      .contact-layout {
         flex-direction: row;
-        justify-content: center;
-        gap: 32px;
+        align-items: flex-start;
+        gap: 48px;
+      }
+      .contact-form-wrapper {
+        flex: 3;
+      }
+      .contact-links-wrapper {
+        flex: 2;
+      }
+      .contact-links {
+        flex-direction: row;
+        flex-wrap: wrap;
+      }
+      .contact-btn {
+        width: auto;
+        flex: 1;
+      }
+      .form-submit {
+        width: auto;
+        align-self: flex-start;
+        padding-left: 32px;
+        padding-right: 32px;
+      }
+    }
+    @media (min-width: 1024px) {
+      .skills-grid {
+        grid-template-columns: repeat(3, 1fr); /* 網頁版三欄 */
+      }
+      .projects-grid {
+        grid-template-columns: repeat(3, 1fr); /* 網頁版三欄 */
       }
     }
     /* CSS:RWD-END */
@@ -250,12 +474,12 @@
     <main>
       <section id="hero" class="section section-hero">
         <div class="container hero-content">
-          <h1 class="hero-title">專注於使用者體驗的<br>UI/UX設計師</h1>
-          <p class="hero-subtitle">我是 [Wendy]，熱愛結合前端開發與 UX 思維，打造直覺且美觀的網站與應用程式。</p>
+          <h1 class="hero-title">專注於使用者體驗的設計師</h1>
+          <p class="hero-subtitle">我是 Wendy，熱愛結合前端開發與 UX 思維，打造直覺且美觀的網站與應用程式。</p>
           <a href="#projects" class="btn-primary">瀏覽作品集</a>
           
           <div class="hero-image-wrapper">
-            <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=800&q=80" alt="在筆電前撰寫程式碼的前端開發者" loading="lazy">
+            <img src="https://images.unsplash.com/photo-1554196278-f6a49cff326c?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="在筆電前設計介面的設計師" loading="lazy">
           </div>
           
           <p class="text-muted" style="margin-top: 32px;">
@@ -266,62 +490,140 @@
       <section id="about" class="section section-about" aria-labelledby="about-heading">
         <div class="container">
           <h2 id="about-heading" class="section-title">關於我</h2>
-          <div class="about-text">
-            <p>目前位於台灣新北市，我是一位具備使用者研究與前端實作能力的設計師。我相信好的使用者體驗必須建立在理解使用者痛點的基礎上。</p>
-            <p class="text-muted">
-              【開發者提示】：這裡目前是 About 區的占位內容。之後會用 Section SDD 的 Prompt 產生新的 section，請把新的 section 程式碼整段貼在這兩個註解中間，完全取代現在這一區。
-            </p>
+          <div class="about-content">
+            <div class="about-text">
+              <p>我是一名資深平面設計師，目前正持續進修 UI、UX 設計、前端切版與 Vibe Coding 等相關技能，致力於將視覺美感與流暢的使用者體驗完美結合。</p>
+              <p>在工作風格上，我非常重視溝通與團隊合作。做事細心認真，注重細節與邏輯，相信好的設計與體驗必須建立在理解使用者痛點的基礎上。</p>
+              
+              <ul class="about-strengths">
+                <li><strong>UI/UX 介面設計：</strong>兼顧視覺美感與使用者體驗，打造直覺的數位產品。</li>
+                <li><strong>前端切版與實作：</strong>熟悉 HTML、CSS 與基礎前端技術，能與開發團隊順暢協作。</li>
+                <li><strong>AI 工具應用：</strong>善用 Vibe Coding 等 AI 工具優化工作流程，提升整體產能。</li>
+              </ul>
+
+              <div class="about-actions">
+                <a href="#projects" class="btn-primary">查看作品集</a>
+                <a href="#contact" class="btn-secondary">聯絡我</a>
+              </div>
+            </div>
+            
+            <div class="about-image-wrapper">
+              <img src="https://images.unsplash.com/photo-1653647054667-c99dc7f914ef?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="專注於設計介面的設計師" loading="lazy">
+            </div>
           </div>
         </div>
       </section>
       <section id="skills" class="section section-skills" aria-labelledby="skills-heading">
         <div class="container">
-          <h2 id="skills-heading" class="section-title">專業技能</h2>
-          <div class="skills-placeholder-box">
-            <p>預計展示的技能分類：</p>
-            <ul>
-              <li><strong>Frontend:</strong> HTML, CSS, JavaScript, React / Vue 等框架。</li>
-              <li><strong>UI/UX:</strong> 具備使用者體驗共學經驗，能協助產品體驗設計。</li>
-              <li><strong>Tools:</strong> Git, Figma, AI 工具應用等。</li>
-            </ul>
-            <p class="text-muted">
-              【開發者提示】：這裡目前是 Skills 區的占位內容。之後會用 Section SDD 的 Prompt 產生新的 section，請把新的 section 程式碼整段貼在這兩個註解中間，完全取代現在這一區。
-            </p>
+          <h2 id="skills-heading" class="section-title">技能</h2>
+          <div class="skills-grid">
+            
+            <div class="skill-category">
+              <h3 class="skill-category-title">UI / UX 介面與體驗</h3>
+              <div class="skill-tags">
+                <span class="skill-tag">Figma</span>
+                <span class="skill-tag">Wireframing</span>
+                <span class="skill-tag">Prototyping</span>
+                <span class="skill-tag">使用者訪談</span>
+                <span class="skill-tag">Design System</span>
+                <span class="skill-tag">易用性測試</span>
+              </div>
+            </div>
+
+            <div class="skill-category">
+              <h3 class="skill-category-title">Frontend 前端開發</h3>
+              <div class="skill-tags">
+                <span class="skill-tag">HTML5</span>
+                <span class="skill-tag">CSS3</span>
+                <span class="skill-tag">JavaScript</span>
+                <span class="skill-tag">Vue.js</span>
+                <span class="skill-tag">Bootstrap</span>
+              </div>
+            </div>
+
+            <div class="skill-category">
+              <h3 class="skill-category-title">Tools 工具與協作</h3>
+              <div class="skill-tags">
+                <span class="skill-tag">Git / GitHub</span>
+                <span class="skill-tag">AI Vibe Coding</span>
+                <span class="skill-tag">Notion</span>
+              </div>
+            </div>
+
           </div>
         </div>
       </section>
       <section id="projects" class="section section-projects" aria-labelledby="projects-heading">
         <div class="container">
-          <h2 id="projects-heading" class="section-title">精選作品集</h2>
+          <h2 id="projects-heading" class="section-title">作品集</h2>
           <div class="projects-grid">
+            
             <div class="project-card">
-              <h3>專案占位 1：XXX App 體驗優化研究</h3>
-              <p>從 App Store 與 Google Play 爬取使用者回饋，進行質性分析與問卷調查，並提出前端介面優化方案。</p>
+              <div class="project-image-wrapper">
+                <img src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?q=80&w=800&auto=format&fit=crop" alt="APP設計螢幕畫面與線框圖" loading="lazy">
+              </div>
+              <div class="project-content">
+                <h3>XXX App 體驗優化研究</h3>
+                <p>從 App Store 與 Google Play 爬取使用者回饋，進行質性分析與問卷調查，並提出介面優化方案。</p>
+              </div>
             </div>
+
             <div class="project-card">
-              <h3>專案占位 2：個人專案或開源貢獻</h3>
-              <p>其他前端實作專案、或結合 AI 工具應用的有趣 Side Project。</p>
+              <div class="project-image-wrapper">
+                <img src="https://images.unsplash.com/photo-1554224154-26032ffc0d07?q=80&w=800&auto=format&fit=crop" alt="記帳 APP 介面設計與財務管理" loading="lazy">
+              </div>
+              <div class="project-content">
+                <h3>XX APP 介面設計</h3>
+                <p>專為現代人設計的記帳應用程式，從使用者需求出發，規劃直覺的收支記錄流程。結合清晰的資料視覺化圖表，讓財務狀況一目了然，並協作完成介面設計。</p>
+              </div>
             </div>
+
+            <div class="project-card">
+              <div class="project-image-wrapper">
+                <img src="https://images.unsplash.com/photo-1561070791-2526d30994b5?q=80&w=800&auto=format&fit=crop" alt="平面設計排版與色彩配置畫面" loading="lazy">
+              </div>
+              <div class="project-content">
+                <h3>品牌視覺與平面設計</h3>
+                <p>提供涵蓋品牌識別、活動海報與社群圖文等多樣化平面設計作品。著重於色彩心理學與排版層次，精準傳達品牌核心價值，營造獨特的視覺風格。</p>
+              </div>
+            </div>
+
           </div>
-          <p class="text-muted" style="margin-top: 24px;">
-            【開發者提示】：這裡目前是 Projects 區的占位內容。之後會用 Section SDD 的 Prompt 產生新的 section，請把新的 section 程式碼整段貼在這兩個註解中間，完全取代現在這一區。
-          </p>
         </div>
       </section>
       <section id="contact" class="section section-contact" aria-labelledby="contact-heading">
         <div class="container">
-          <h2 id="contact-heading" class="section-title">聯絡我</h2>
-          <p>如果有任何前端開發或 UI/UX 協作的機會，歡迎與我聯繫！</p>
+          <h2 id="contact-heading" class="section-title" style="text-align: center;">聯絡我</h2>
+          <p class="contact-subtitle">如果有任何 UI/UX 設計協作的機會，歡迎與我聯繫！</p>
           
-          <div class="contact-info">
-            <a href="mailto:hello@example.com" class="btn-primary">發送 Email</a>
-            <a href="https://github.com/yourname" target="_blank" rel="noopener noreferrer" class="nav-link">GitHub Profile</a>
-            <a href="https://www.linkedin.com/in/yourname" target="_blank" rel="noopener noreferrer" class="nav-link">LinkedIn Profile</a>
-          </div>
+          <div class="contact-layout">
+            <div class="contact-form-wrapper">
+              <form class="contact-form" action="#" method="POST">
+                <div class="form-group">
+                  <label for="name" class="form-label">姓名</label>
+                  <input type="text" id="name" name="name" class="form-control" required placeholder="您的姓名">
+                </div>
+                <div class="form-group">
+                  <label for="email" class="form-label">Email</label>
+                  <input type="email" id="email" name="email" class="form-control" required placeholder="您的電子信箱">
+                </div>
+                <div class="form-group">
+                  <label for="message" class="form-label">訊息內容</label>
+                  <textarea id="message" name="message" class="form-control" rows="5" required placeholder="請輸入您的訊息..."></textarea>
+                </div>
+                <button type="submit" class="btn-primary form-submit">發送 Email</button>
+              </form>
+            </div>
 
-          <p class="text-muted" style="margin-top: 32px;">
-            【開發者提示】：這裡目前是 Contact 區的占位內容。之後會用 Section SDD 的 Prompt 產生新的 section，請把新的 section 程式碼整段貼在這兩個註解中間，完全取代現在這一區。
-          </p>
+            <div class="contact-links-wrapper">
+              <h3>其他聯絡方式</h3>
+              <p class="text-muted">您也可以透過以下社群平台找到我：</p>
+              <div class="contact-links">
+                <a href="https://github.com/yourname" target="_blank" rel="noopener noreferrer" class="btn-secondary contact-btn">GitHub Profile</a>
+                <a href="https://www.linkedin.com/in/yourname" target="_blank" rel="noopener noreferrer" class="btn-secondary contact-btn">LinkedIn Profile</a>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
       </main>
